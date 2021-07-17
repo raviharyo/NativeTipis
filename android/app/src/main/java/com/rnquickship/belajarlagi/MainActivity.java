@@ -1,4 +1,4 @@
-package com.belajarlagi;
+package com.rnquickship.belajarlagi;
 
 import com.facebook.react.ReactActivity;
 

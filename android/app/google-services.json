@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "971628074969",
+    "project_id": "quickship-app",
+    "storage_bucket": "quickship-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971628074969:android:21d46414ff76e09aadabc8",
+        "android_client_info": {
+          "package_name": "com.example.quickshipapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971628074969-vr1utv8ovcdnud2pgi59ngcfniccludp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1GIchu5sAuULEpsPUDo8Ce0jH3cluxaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971628074969-vr1utv8ovcdnud2pgi59ngcfniccludp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971628074969:android:f161db630bb2d819adabc8",
+        "android_client_info": {
+          "package_name": "com.rnquickship.belajarlagi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971628074969-mu6ln91ph0nob7fkve14hr9f6o0gn4gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rnquickship.belajarlagi",
+            "certificate_hash": "6208236899a0bb50d6c5d367d670650e5e7c9316"
+          }
+        },
+        {
+          "client_id": "971628074969-vr1utv8ovcdnud2pgi59ngcfniccludp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1GIchu5sAuULEpsPUDo8Ce0jH3cluxaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971628074969-vr1utv8ovcdnud2pgi59ngcfniccludp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

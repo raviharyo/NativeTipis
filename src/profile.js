@@ -1,50 +1,54 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, Button, View } from 'react-native';
+import { Text, StyleSheet, Button, View, FlatList} from 'react-native';
+import firestore, { firebase } from '@react-native-firebase/firestore';
 import { Avatar, Accessory } from 'react-native-elements';
 import { ListItem } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 class Profile extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            data: [],
+
+        }
     }
+    componentDidMount(){
+        this.gettingFullDataCollection();
+    }
+
+    gettingFullDataCollection = async () => {
+
+        const users = await firestore().collection('resi').get();
+        const allData = users.docs.map((doc) =>
+            Object.assign({ id: doc.id }, doc.data()));
+        this.setState({ data: allData });
+        console.log('semua data terpilih', allData)
+    }
+
     render() {
-        // var name = ['ravi', 'haryo', 'baskoro'];
-        // var role = ['CEO', 'Vice President', 'Programmer']
-        // var avatar_url = 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg'
+        
         return (
             <View style={styles.main}>
-                <Text style={styles.title}>Account Profile</Text>
-                <Avatar style={styles.ava}
-                    source={{
-                        uri:
-                            'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' ,
-                    }}
-                >
-                    <Accessory />
-                </Avatar>
-                <Text>Ravi Haryo Baskoro</Text>
-                <Text>raffiiphone99@gmail.com</Text>
-                <Text>081228915102</Text>
-                <Text>Silver Member</Text>
-                <Text>Address : </Text>
-                <Text>Perumahan Palem Hijau 2 Blok A-10 </Text>
+                <FlatList
+                    data={this.state.data.filter((val)=>val.waktu2 != "diisi oleh kurir")}
+                    renderItem={({ item, index }) => (
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('details', item)}>
 
-                  
-                {/* <ListItem
-                    leftAvatar={{
-                        title: name[0],
-                        source: { uri: avatar_url },
-                        showAccessory: true,
-                    }}
-                    title= {name}
-                    subtitle={role}
-                    chevron
-                />; */}
+                        <View style={{
+                            backgroundColor: '#FFFF',
+                            marginVertical: 10,
+                            borderRadius: 3,
+                        }}>
+                            <Text style={styles.Titletext}>{item.id}</Text>
+                            <Text style={styles.Titletext}>{item.alamat}</Text>
+                            
 
-                {/* <Button
-                    title='back to home'
-                    onPress={() => this.props.navigation.navigate('Home')}
-                /> */}
+                        </View>
+                        </TouchableOpacity>
+                    )}
+
+
+                />
             </View>
         );
     }
@@ -74,6 +78,12 @@ const styles = StyleSheet.create(
             marginLeft: 10,
             marginBottom:10,
             marginRight:10
+        },
+        bio: 
+        {
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+            
         }
     }
 )
