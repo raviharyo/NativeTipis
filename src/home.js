@@ -72,14 +72,15 @@ class Home extends Component {
     }
     EditResiPilihan = async (id) => {
         const waktu = new Date().toLocaleString()
-        const antar = 'barang melayuh kerumahmu'
+        const antar = "barang melayuh kerumahmu"
         
         for(const item of this.state.data1){
             const user = await firestore()
                 .collection('resi')
                 .doc(item.id)
                 .update({
-                    ...item, keterangan2: antar, ...item, waktu2: waktu
+                     ...item, keterangan2: antar,
+                      waktu2: waktu
                         
                 })
                 .then(() => {
@@ -87,7 +88,7 @@ class Home extends Component {
                     console.log('User updated!');
                 })
                 .catch(err=> console.log(err) )
-                ;
+                
         
             }
             this.setState({data1: []})

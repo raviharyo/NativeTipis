@@ -32,7 +32,7 @@ class Profile extends Component {
                 <FlatList
                     data={this.state.data.filter((val)=>val.waktu2 != "diisi oleh kurir")}
                     renderItem={({ item, index }) => (
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('details', item)}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('detailScreen', {item})}>
 
                         <View style={{
                             backgroundColor: '#FFFF',
