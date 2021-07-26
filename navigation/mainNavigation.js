@@ -5,13 +5,14 @@ import DetailsScreen from '../src/details'
 import LoginScreen from '../src/login'
 import ProfileScreen from '../src/profile';
 import TabNavigation from './tabNavigation';
+import SplashScreen from '../src/splashscreen'
 const Stack = createStackNavigator();
 class MainNavigation extends Component {
     
 
     render() { 
         return ( 
-            <Stack.Navigator initialRouteName="TabNav" headerMode="none">
+            <Stack.Navigator initialRouteName="LoginScreen" headerMode="none">
                 {/* <Stack.Screen
                     name="Home"
                     component={HomeScreen}
@@ -26,6 +27,12 @@ class MainNavigation extends Component {
                     name="LoginScreen"
                     component={LoginScreen}
                 />
+                <Stack.Screen
+                name="SplashScreen"
+                component={SplashScreen}
+
+                />
+
                 <Stack.Screen
                     name="Basscoots"
                     component={TabNavigation}

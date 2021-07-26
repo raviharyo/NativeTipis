@@ -1,8 +1,8 @@
 import React from 'react';
 import { KeyboardAvoidingView, StyleSheet, View, Image, TextInput, Button, Text } from "react-native";
-import {auth, firebase} from "@react-native-firebase/auth";
-// import firebase from 'firebase'
-// import Spinner from "./Spinner";
+import firebase from "@react-native-firebase/app";
+import auth from "@react-native-firebase/auth"
+
 export default class LoginScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -15,7 +15,7 @@ export default class LoginScreen extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(data => {
                 this.setState({ error: '', success: 'Authentication success!', loading: false });
-                this.props.navigation.navigate('Basscoots');
+                this.props.navigation.navigate('SplashScreen');
                 console.log(data.user)
             })
             .catch(e => {
@@ -39,19 +39,21 @@ export default class LoginScreen extends React.Component {
 
     render() {
         return (
+            
             <KeyboardAvoidingView style={styles.container}
                 behavior="padding" enabled >
-                {/* <Image source= style={styles.image}></Image> */}
+                <Image source = {require('./icon/Quickship_Logo.png')} 
+                style={styles.image}></Image>
                 <Text style={styles.errorTextStyle}>{this.state.error}</Text>
                 <Text style={styles.successTextStyle}>{this.state.success}</Text>
                 <TextInput
                     value={this.state.email}
                     onChangeText={(inputan) => this.setState({ email: inputan })}
-                    style={styles.email} placeholder="email..."></TextInput>
+                    style={styles.email} placeholder="E-mail" placeholderTextColor="#FFFF"></TextInput>
                 <TextInput
                     value={this.state.password}
                     onChangeText={(inputan) => this.setState({ password: inputan })}
-                    style={styles.email} placeholder="Password,,," secureTextEntry={true}></TextInput>
+                    style={styles.email} placeholder="Password" placeholderTextColor="#FFFF" secureTextEntry={true}></TextInput>
                 <View style={styles.button}>
                     <Button 
                     onPress ={this._onPressLogin}
@@ -59,39 +61,48 @@ export default class LoginScreen extends React.Component {
 
                     />
                 </View>
-                <View style={styles.button}>
+                {/* <View style={styles.button}>
                     <Button
+                        color= '#FF0000'
                         onPress={this._onPressCancel}
-                        title="Cancel"></Button>
-                </View>
+                        title="Cancel">
+                        
+                        </Button>
+                </View> */}
             </KeyboardAvoidingView>
+            
         )
     };
 }
 
 const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'skyblue'
+        backgroundColor: '#FaFaFF'
     },
     image: {
-        width: 120,
-        height: 120,
-        marginBottom: 40,
+        // width: 120,
+        // height: 120,
+        marginBottom: -20,
     },
     email: {
-        backgroundColor: 'white',
+        backgroundColor: '#6C86BA',
         borderRadius: 5,
         width: '90%',
         padding: 5,
         marginBottom: 10,
+        borderStyle: "solid",
+      
     },
     button: {
+        marginTop: 19,
         width: '90%',
         marginBottom: 10,
     },
+    
     errorTextStyle: {
         color: '#E64A19',
         alignSelf: 'center',

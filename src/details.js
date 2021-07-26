@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
-import {StyleSheet, View, Button, Text} from 'react-native';
+import {StyleSheet, View, Button, Text, Image, Alert} from 'react-native';
 import firestore, { firebase } from '@react-native-firebase/firestore';
+// import ImagePicker from 'react-native-image-picker';
+// import storage from '@react-native-firebase/storage';
+// import * as Progress from 'react-native-progress';
 
 
 class details extends Component {
@@ -25,6 +28,7 @@ class details extends Component {
                 .then(() => {
 
                     console.log('User updated!');
+                    // window.location.reload()
                     this.props.navigation.goBack();
                 })
                 .catch(err => console.log(err))
@@ -34,16 +38,50 @@ class details extends Component {
 
         
     }
+    
 
-    render() { 
+    render() {
+        
         return ( 
-            <View>
-                <Text>{this.props.route.params.item.id}</Text>
-                <Text>{this.props.route.params.item.penerima}</Text>
-                <Text>{this.props.route.params.item.hp_penerima}</Text>
-                <Text>{this.props.route.params.item.alamat}</Text>
+            <View style={styles.MainPage}>
+            <Text style={styles.judul}>Detail Resi</Text>
+                <View style={{
+                    backgroundColor: '#E2FFCE',
+                    marginVertical: 10,
+                    marginTop: 15,
+                    borderRadius: 25,
+                    // shadowColor: '#000',
+                    // shadowOffset: {
+                    //     width: 3,
+                    //     height: 3,
+                    // },
+                    elevation: 5,
+                    shadowOpacity: 1,
+                    shadowRadius: 5,
+                    marginBottom: 16
+                }}>
+                    {/* <View
+                        style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                        }}
+                    /> */}
+                <Text style={styles.Titletext}>No. Resi:</Text>
+                <Text style={styles.Titleresi}>{this.props.route.params.item.id}</Text>
+                <Text style={styles.Titletext}>Nama Penerima:</Text>
+                <Text style={styles.textkecil}>{this.props.route.params.item.penerima}</Text>
+                <Text style={styles.Titletext}>No. Handphone:</Text> 
+                <Text style={styles.textkecil}>{this.props.route.params.item.nohp}</Text>
+                <Text style={styles.Titletext}>Alamat: </Text>
+                <Text style={styles.textkecil}>{this.props.route.params.item.alamat}</Text>
+                    <Text style={styles.Titletext}>Kode Pos: </Text>
+                    <Text style={styles.textkecilkode}>{this.props.route.params.item.kodepos}</Text>
+                </View>
+                
 
                 <Button
+                
+                    color="#6C86BA"
                     title="selesai"
                     onPress={()=>this.EditResiPilihan(this.props.route.params.item.id)}
                 />
@@ -51,20 +89,58 @@ class details extends Component {
          );
     }
 }
- 
+const styles = StyleSheet.create(
+    {
+        MainPage:
+        {
+            flex: 1,
+
+            backgroundColor: '#f7f7f7',
+            fontFamily: 'serif'
+
+        },
+        judul: {
+
+            fontSize: 25,
+            fontWeight: "bold",
+            marginTop: 10,
+            marginLeft: 10,
+            marginBottom: 10
+        },
+        Titletext:
+        {
+            color: 'black',
+            marginLeft: 10,
+            fontSize: 22,
+            fontWeight: "bold",
+            marginTop: 18
+
+        },
+        Titleresi:
+        {
+            color: 'black',
+            marginLeft: 10,
+            fontSize: 22,
+            fontWeight: "bold",
+            marginTop: 8
+
+        },
+        textkecil: {
+            color: 'black',
+            fontSize: 18,
+            marginTop: 3,
+            marginBottom: 3,
+            marginLeft: 10
+        },
+        textkecilkode: {
+            color: 'black',
+            fontSize: 18,
+            marginTop: 3,
+            marginBottom: 3,
+            marginLeft: 10,
+            paddingBottom: 10
+        },
+        
+    }
+);
 export default details;
-
-
-// export default function details({route, navigation}){
-//     console.log('params', route.getParam)
-//     // const{item} = route.params
-//     return(
-//         <View>
-//             {/* <Text>ID = {item.id}</Text>
-//             <Text>ID = {item.penerima}</Text>
-//             <Text>ID = {item.alamt}</Text> */}
-//             <Text>ID = halo coj</Text>
-            
-//         </View>
-//     )
-// }

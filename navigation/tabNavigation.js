@@ -23,7 +23,7 @@ export default (props) => {
                      iconName = "home"
                  }
                  else if(route.name === "Profile"){
-                     iconName = "person"
+                     iconName = "list"
                  }
                  return <Icon type="ionicon" name={iconName} size={22} color={color} />;
              },   
